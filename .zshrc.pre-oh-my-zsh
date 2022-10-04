@@ -1,0 +1,3 @@
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export HOMEBREW_GITHUB_API_TOKEN=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
+export PATH="/usr/local/sbin:$PATH"
