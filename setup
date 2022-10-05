@@ -24,7 +24,10 @@ set hostname:
 sudo hostnamectl set-hostname ubuntu-zfs-ansible
 
 ansible:
-ansible all -i inventory.txt -m ping
+ansible all -i inventory.txt -m ping #without specifying ssh-key
+ansible all --key-file ~/.ssh/ansible -i inventory.txt -m ping #using ansible key
+#ansible flags and config can be set up in ansible.cfg which if exist in cwd will override /etc/ansible/ansible.cfg 
+ansible all -m ping
 
 
 zfs notes:
