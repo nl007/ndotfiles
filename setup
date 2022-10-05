@@ -1,0 +1,34 @@
+ubuntu 22 install with zfs on root enabled
+
+sudo apt install curl vim tldr fzf ripgrep fd bat vim-nox git ansible caddy ffmpeg htop magic-wormhole mitmproxy poetry sqlite sqlmap
+
+dua:
+sudo apt install rustc musl
+curl -LSfs https://raw.githubusercontent.com/Byron/dua-cli/master/ci/install.sh | \
+    sh -s -- --git Byron/dua-cli --target x86_64-unknown-linux-musl --crate dua --tag v2.17.4
+export PATH=$PATH:~/.cargo/bin
+source ~/.zshrc
+
+ohmyzsh: 
+plugins, aliases
+disable magic functions
+autocomplete
+
+
+ssh:
+need notes on ssh agent so I don't have to put in password all the time
+
+set hostname:
+sudo hostnamectl set-hostname ubuntu-zfs-ansible
+
+zfs notes:
+zfs list
+sudo zfs snapshot -r rpool@20220930-stable
+zfs list -t snapshot
+zfs create
+zfs set compression=on
+zfs list -t volume
+zfs destroy
+zfs send
+zfs receive
+zpool list
