@@ -10,9 +10,10 @@ export PATH=$PATH:~/.cargo/bin
 source ~/.zshrc
 
 ohmyzsh: 
-plugins, aliases
+plugins, aliases, ssh-agent
 disable magic functions
 autocomplete
+
 
 
 ssh:
