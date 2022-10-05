@@ -16,10 +16,16 @@ autocomplete
 
 
 ssh:
+ssh-keygen -t ed25519 -C "nathan default"
+ssh-copy-id -i ~/.ssh/id_ed25519-ansible.pub 192.168.1.17
 need notes on ssh agent so I don't have to put in password all the time
 
 set hostname:
 sudo hostnamectl set-hostname ubuntu-zfs-ansible
+
+ansible:
+ansible all -i inventory.txt -m ping
+
 
 zfs notes:
 zfs list
