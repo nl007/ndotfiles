@@ -1,6 +1,6 @@
 ubuntu 22 install with zfs on root enabled
 
-sudo apt install curl vim tldr fzf ripgrep fd bat vim-nox git ansible caddy ffmpeg htop magic-wormhole mitmproxy poetry sqlite sqlmap
+sudo apt install curl vim tldr fzf ripgrep bat vim-nox git ansible caddy ffmpeg htop magic-wormhole mitmproxy sqlite sqlmap
 
 dua:
 sudo apt install rustc musl
@@ -8,6 +8,10 @@ curl -LSfs https://raw.githubusercontent.com/Byron/dua-cli/master/ci/install.sh 
     sh -s -- --git Byron/dua-cli --target x86_64-unknown-linux-musl --crate dua --tag v2.17.4
 export PATH=$PATH:~/.cargo/bin
 source ~/.zshrc
+
+custom:
+fd
+poetry
 
 ohmyzsh: 
 plugins, aliases, ssh-agent
@@ -28,7 +32,16 @@ ansible all -i inventory.txt -m ping #without specifying ssh-key
 ansible all --key-file ~/.ssh/ansible -i inventory.txt -m ping #using ansible key
 #ansible flags and config can be set up in ansible.cfg which if exist in cwd will override /etc/ansible/ansible.cfg 
 ansible all -m ping
-
+ansible all --list-hosts
+ansible all -m gather_facts
+ansible all -m gather_facts --limit <host>
+ansible all -m apt -a update_cache=true --become --ask-become-pass
+ansible all -m apt -a "name=snapd state=latest" --become --ask-become-pass
+ansible all -m apt -a name=vim-nox --become --ask-become-pass
+ansible-playbook --ask-become-pass test.yaml
+ansible-playbook --list-tags setup-nathan-environment.yaml
+ansible-playbook --ask-become-pass --tags ubuntu setup-nathan-environment.yaml
+ansible-playbook --ask-become-pass --tags "ubuntu,database" setup-nathan-environment.yaml
 
 zfs notes:
 zfs list
